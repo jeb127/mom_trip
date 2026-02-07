@@ -34,7 +34,7 @@ function openPapago() {
 // ================================ */
 // function openFood() {
 //   const app = "comgooglemaps://";
-//   const web = "https://maps.app.goo.gl/JemYKVT9civrY8b57";
+//   const web = "여기에 필요한 링크 넣기";
 //   openAppOrWeb(app, web);
 // }
 
@@ -43,7 +43,7 @@ function openPapago() {
 // ================================ */
 // function openCafe() {
 //   const app = "comgooglemaps://";
-//   const web = "https://maps.app.goo.gl/rDiy91qFr8J1qhGL7";
+//   const web = "여기에 필요한 링크 넣기";
 //   openAppOrWeb(app, web);
 // }
 
@@ -52,7 +52,7 @@ function openPapago() {
 // ================================ */
 // function openSee() {
 //   const app = "comgooglemaps://";
-//   const web = "https://maps.app.goo.gl/i6sKKJtk8wT66unAA";
+//   const web = "여기에 필요한 링크 넣기";
 //   openAppOrWeb(app, web);
 // }
 
@@ -79,5 +79,6 @@ wonInput.addEventListener("input", () => {
   if (isNaN(won)) return;
   yenInput.value = Math.round(won / RATE);
 });
+
 
 
