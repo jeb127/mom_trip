@@ -38,23 +38,23 @@ function openFood() {
   openAppOrWeb(app, web);
 }
 
-/* ===============================
-  카페
-================================ */
-function openCafe() {
-  const app = "comgooglemaps://";
-  const web = "https://maps.app.goo.gl/rDiy91qFr8J1qhGL7";
-  openAppOrWeb(app, web);
-}
+// /* ===============================
+//   카페
+// ================================ */
+// function openCafe() {
+//   const app = "comgooglemaps://";
+//   const web = "https://maps.app.goo.gl/rDiy91qFr8J1qhGL7";
+//   openAppOrWeb(app, web);
+// }
 
-/* ===============================
-  볼거리
-================================ */
-function openSee() {
-  const app = "comgooglemaps://";
-  const web = "https://maps.app.goo.gl/i6sKKJtk8wT66unAA";
-  openAppOrWeb(app, web);
-}
+// /* ===============================
+//   볼거리
+// ================================ */
+// function openSee() {
+//   const app = "comgooglemaps://";
+//   const web = "https://maps.app.goo.gl/i6sKKJtk8wT66unAA";
+//   openAppOrWeb(app, web);
+// }
 
 /* ===============================
    환율 계산기
@@ -79,3 +79,4 @@ wonInput.addEventListener("input", () => {
   if (isNaN(won)) return;
   yenInput.value = Math.round(won / RATE);
 });
+
