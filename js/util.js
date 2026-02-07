@@ -29,14 +29,14 @@ function openPapago() {
   openAppOrWeb(app, web);
 }
 
-/* ===============================
-   밥
-================================ */
-function openFood() {
-  const app = "comgooglemaps://";
-  const web = "https://maps.app.goo.gl/JemYKVT9civrY8b57";
-  openAppOrWeb(app, web);
-}
+// /* ===============================
+//    밥
+// ================================ */
+// function openFood() {
+//   const app = "comgooglemaps://";
+//   const web = "https://maps.app.goo.gl/JemYKVT9civrY8b57";
+//   openAppOrWeb(app, web);
+// }
 
 // /* ===============================
 //   카페
@@ -79,4 +79,5 @@ wonInput.addEventListener("input", () => {
   if (isNaN(won)) return;
   yenInput.value = Math.round(won / RATE);
 });
+
 
