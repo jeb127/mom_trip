@@ -31,14 +31,15 @@ onSnapshot(colRef, (snapshot) => {
 // ===== 정렬 기준 ====
 function dateKey(dateStr) {
   // "2.03" -> [2, 3]
-  const s = String(dateStr || "").trim();
-  const [mStr, dStr] = s.split(".");
-  const m = Number(mStr);
-  const d = Number(dStr);
-  if (!Number.isFinite(m) || !Number.isFinite(d)) return Number.POSITIVE_INFINITY;
+  const s = String(dateStr ?? "").trim();
+  const m = s.match(/^(\d{1,2})\.(\d{1,2})$/);
+  if (!m) return 999999;
+  
+  const month = Number(m[1]);
+  const day = Number(m[2]);
 
+  return month * 100 + day;
   // 월*100 + 일 로 키 만들기 (2월3일 -> 203)
-  return m * 100 + d;
 }
 
 // ===== 렌더 =====
@@ -138,3 +139,4 @@ document.getElementById("confirmOk").onclick = async () => {
   document.getElementById("confirmModal").classList.add("hidden");
   deleteId = null;
 };
+
