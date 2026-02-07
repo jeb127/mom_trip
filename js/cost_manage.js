@@ -28,10 +28,33 @@ onSnapshot(colRef, (snapshot) => {
   render();
 });
 
+// ===== 정렬 기준 ====
+function dateKey(dateStr) {
+  // "2.03" -> [2, 3]
+  const s = String(dateStr || "").trim();
+  const [mStr, dStr] = s.split(".");
+  const m = Number(mStr);
+  const d = Number(dStr);
+  if (!Number.isFinite(m) || !Number.isFinite(d)) return Number.POSITIVE_INFINITY;
+
+  // 월*100 + 일 로 키 만들기 (2월3일 -> 203)
+  return m * 100 + d;
+}
+
 // ===== 렌더 =====
 function render() {
-  renderTable(costlist);
-  renderTotals(costlist);
+  const sorted = [...costlist].sort((a, b) => {
+    const diff = dateKey(a.date) - dateKey(b.date);
+    if (diff !== 0) return diff;
+
+    // 같은 날짜면 createdAt 오름차순
+    const ta = a.createdAt?.toMillis ? a.createdAt.toMillis() : 0;
+    const tb = b.createdAt?.toMillis ? b.createdAt.toMillis() : 0;
+    return ta - tb;
+  });
+
+  renderTable(sorted);
+  renderTotals(sorted);
 }
 
 // ===== 테이블 =====
@@ -51,7 +74,7 @@ function renderTable(list) {
       <td>${item.date}</td>
       <td>${item.spendby}</td>
       <td>${item.who}</td>
-      <td>${Number(item.cost).toLocaleString()}엔</td>
+      <td>${Number(item.cost).toLocaleString()}원</td>
     `;
 
     // 모바일 길게 눌러 삭제
@@ -115,4 +138,3 @@ document.getElementById("confirmOk").onclick = async () => {
   document.getElementById("confirmModal").classList.add("hidden");
   deleteId = null;
 };
-
