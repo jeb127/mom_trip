@@ -32,6 +32,9 @@ onSnapshot(colRef, (snapshot) => {
 function dateKey(dateStr) {
   // "2.03" -> [2, 3]
   const s = String(dateStr ?? "").trim();
+
+  if (s ==="이전") return -1;
+  
   const m = s.match(/^(\d{1,2})\.(\d{1,2})$/);
   if (!m) return 999999;
   
@@ -139,4 +142,5 @@ document.getElementById("confirmOk").onclick = async () => {
   document.getElementById("confirmModal").classList.add("hidden");
   deleteId = null;
 };
+
 
